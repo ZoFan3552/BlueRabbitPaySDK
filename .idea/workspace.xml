@@ -5,9 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3169b80e-c5bd-454c-8524-6a0b2a4cdcb8" name="Changes" comment="feat:init project">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/zeddic/sdk/payments/nativepay/INativePay.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/zeddic/test/WeChatPayTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/zeddic/factory/Configuration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/zeddic/factory/PayFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/zeddic/factory/defaults/DefaultPayFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/zeddic/payments/h5/IH5Pay.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/zeddic/payments/nativepay/INativePay.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/zeddic/payments/nativepay/model/PrepayRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/zeddic/payments/nativepay/model/PrepayResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/zeddic/payments/nativepay/service/NativePayService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/zeddic/test/NativePayServiceTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/zeddic/sdk/package-info.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/zeddic/sdk/payments/nativepay/INativePay.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/zeddic/util/package-info.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/zeddic/test/ApiTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/zeddic/test/ApiTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -46,8 +56,9 @@
   "keyToString": {
     "Application.ApiTest.executor": "Run",
     "JUnit.ApiTest.test_retrofit2.executor": "Run",
+    "JUnit.NativePayServiceTest.testPay.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "2024-05-23-InitNativePayService",
     "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -61,7 +72,7 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="JUnit.ApiTest.test_retrofit2">
+  <component name="RunManager" selected="JUnit.NativePayServiceTest.testPay">
     <configuration name="ApiTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.zeddic.test.ApiTest" />
       <module name="BlueRabbitPaySDK" />
@@ -91,8 +102,25 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="NativePayServiceTest.testPay" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="BlueRabbitPaySDK" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.zeddic.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.zeddic.test" />
+      <option name="MAIN_CLASS_NAME" value="com.zeddic.test.NativePayServiceTest" />
+      <option name="METHOD_NAME" value="testPay" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.NativePayServiceTest.testPay" />
         <item itemvalue="JUnit.ApiTest.test_retrofit2" />
         <item itemvalue="Application.ApiTest" />
       </list>
@@ -134,7 +162,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716438085413</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="feat:得到微信扫码支付所需的二维码">
+      <option name="closed" value="true" />
+      <created>1716464736569</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1716464736569</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -153,7 +189,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="feat:init project" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat:init project" />
+    <MESSAGE value="feat:得到微信扫码支付所需的二维码" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat:得到微信扫码支付所需的二维码" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

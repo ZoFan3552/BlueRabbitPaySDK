@@ -1,7 +1,8 @@
 package com.zeddic.test;
 
 import com.alibaba.fastjson.JSON;
-import com.zeddic.sdk.payments.nativepay.INativePay;
+import com.zeddic.payments.nativepay.INativePay;
+import com.zeddic.payments.nativepay.model.PrepayResponse;
 import com.zeddic.util.SignUtils;
 import lombok.extern.slf4j.Slf4j;
 import okhttp3.OkHttpClient;
@@ -55,7 +56,7 @@ public class ApiTest {
         dataMap.put("timestamp" , String.valueOf(timestamp));
         dataMap.put("notify_url" , "https://chat.zeddic.icu");
 
-        Call<Object> prepay = nativePay.prepay(
+        Call<PrepayResponse> prepay = nativePay.prepay(
                 dataMap.get("mch_id"),
                 dataMap.get("out_trade_no"),
                 dataMap.get("total_fee"),
@@ -63,7 +64,7 @@ public class ApiTest {
                 dataMap.get("timestamp"),
                 dataMap.get("notify_url"),
                 SignUtils.createSign(dataMap, "cd43230d2720924143ccdfd1e83f4cdb"));
-        Response<Object> response = prepay.execute();
+        Response<PrepayResponse> response = prepay.execute();
         Object body = response.body();
 
         log.info("测试结果：{}",JSON.toJSONString(body));
