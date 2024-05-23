@@ -29,7 +29,7 @@ public class NativePayServiceTest {
     public void testPay() throws IOException {
         PrepayRequest request = new PrepayRequest();
         request.setMchId("1677728047");
-        request.setOutTradeNo(String.valueOf(RandomStringUtils.randomNumeric(8)));
+        request.setOutTradeNo((RandomStringUtils.randomNumeric(8)));
         request.setTotalFee("0.01");
         request.setBody("QQ公仔");
         request.setNotifyUrl("https://chat.zeddic.icu");

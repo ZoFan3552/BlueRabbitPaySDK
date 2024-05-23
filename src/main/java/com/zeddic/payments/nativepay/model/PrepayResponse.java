@@ -3,7 +3,6 @@ package com.zeddic.payments.nativepay.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Data;
 
 @lombok.Data
 @JsonIgnoreProperties(ignoreUnknown = true)//防止接口变动而SDK解析不了新的参数
