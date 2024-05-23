@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3169b80e-c5bd-454c-8524-6a0b2a4cdcb8" name="Changes" comment="feat:init project">
-      <change afterPath="$PROJECT_DIR$/docs/native.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/zeddic/util/SignUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/zeddic/sdk/payments/nativepay/INativePay.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/zeddic/test/WeChatPayTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/zeddic/test/ApiTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/zeddic/test/ApiTest.java" afterDir="false" />
     </list>
@@ -20,6 +20,7 @@
       <list>
         <option value="package-info" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -35,25 +36,32 @@
   &quot;associatedIndex&quot;: 6
 }</component>
   <component name="ProjectId" id="2gqu3WSgVikYukoEL2UbBIkRRxz" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.ApiTest.executor": "Run",
+    "JUnit.ApiTest.test_retrofit2.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "2024-05-23-test-api",
+    "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "editor.preferences.completion",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.ApiTest.test_retrofit2">
     <configuration name="ApiTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.zeddic.test.ApiTest" />
       <module name="BlueRabbitPaySDK" />
@@ -67,8 +75,25 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ApiTest.test_retrofit2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="BlueRabbitPaySDK" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.zeddic.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.zeddic.test" />
+      <option name="MAIN_CLASS_NAME" value="com.zeddic.test.ApiTest" />
+      <option name="METHOD_NAME" value="test_retrofit2" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ApiTest.test_retrofit2" />
         <item itemvalue="Application.ApiTest" />
       </list>
     </recent_temporary>
@@ -129,5 +154,9 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="feat:init project" />
     <option name="LAST_COMMIT_MESSAGE" value="feat:init project" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
