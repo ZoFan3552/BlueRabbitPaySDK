@@ -1,28 +1,34 @@
-package com.zeddic.payments.nativepay;
+package com.zeddic.payments.jump_h5;
 
-import com.zeddic.payments.nativepay.model.GetRefundOrderResponse;
-import com.zeddic.payments.nativepay.model.PrepayResponse;
-import com.zeddic.payments.nativepay.model.QueryOrderByOutTradeNoResponse;
-import com.zeddic.payments.nativepay.model.RefundOrderResponse;
+
+import com.zeddic.payments.jump_h5.model.GetRefundOrderResponse;
+import com.zeddic.payments.jump_h5.model.PrepayResponse;
+import com.zeddic.payments.jump_h5.model.QueryOrderByOutTradeNoResponse;
+import com.zeddic.payments.jump_h5.model.RefundOrderResponse;
 import retrofit2.Call;
-import retrofit2.http.*;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.Headers;
+import retrofit2.http.POST;
 
-/**
- * 扫码支付API
- */
-public interface INativePay {
+public interface IJumpH5PayApi {
 
-    @POST("api/wxpay/native")
     @FormUrlEncoded
+    @POST("api/wxpay/jump_h5")
     @Headers("content-type: application/x-www-form-urlencoded")
-    Call<PrepayResponse> prepay(@Field("mch_id") String mchId,
-                                @Field("out_trade_no") String outTradeNo,
-                                @Field("total_fee") String totalFee,
-                                @Field("body") String body,
-                                @Field("timestamp") String timestamp,
-                                @Field("notify_url") String notifyUrl,
-                                @Field("sign") String sign
+    Call<PrepayResponse> prepay(
+            @Field("mch_id") String mchId,
+            @Field("out_trade_no") String outTradeNo,
+            @Field("total_fee") String totalFee,
+            @Field("body") String body,
+            @Field("timestamp") String timestamp,
+            @Field("notify_url") String notifyUrl,
+            @Field("return_url") String returnUrl,
+            @Field("attach") String attach,
+            @Field("time_expire") String timeExpire,
+            @Field("sign") String sign
     );
+
 
     @FormUrlEncoded
     @POST("api/wxpay/get_pay_order")
@@ -56,4 +62,5 @@ public interface INativePay {
             @Field("timestamp") String timestamp,
             @Field("sign") String sign
     );
+
 }

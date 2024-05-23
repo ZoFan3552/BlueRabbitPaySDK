@@ -1,34 +1,46 @@
-package com.zeddic.payments.nativepay.service;
+package com.zeddic.payments.jsapi;
 
 import com.zeddic.factory.Configuration;
-import com.zeddic.payments.nativepay.INativePay;
-import com.zeddic.payments.nativepay.model.*;
+import com.zeddic.payments.jsapi.model.*;
 import retrofit2.Call;
-import retrofit2.Response;
 
-import java.io.IOException;
+public class JSPayService {
 
-public class NativePayService {
-    private final INativePay nativePay;
     private final Configuration configuration;
+    private final IJSPayApi jsPayApi;
 
-    public NativePayService(Configuration configuration, INativePay nativePay) {
+    public JSPayService(Configuration configuration, IJSPayApi jsPayApi) {
         this.configuration = configuration;
-        this.nativePay = nativePay;
+        this.jsPayApi = jsPayApi;
     }
 
-    public PrepayResponse prepay(PrepayRequest prepayRequest) throws IOException {
-        //1.请求接口和签名
-        Call<PrepayResponse> prepay = nativePay.prepay(
-                prepayRequest.getMchId(),
-                prepayRequest.getOutTradeNo(),
-                prepayRequest.getTotalFee(),
-                prepayRequest.getBody(),
-                prepayRequest.getTimestamp(),
-                prepayRequest.getNotifyUrl(),
-                prepayRequest.createSign(configuration.getPartnerKey()));
-        Response<PrepayResponse> response = prepay.execute();
-        return response.body();
+    /**
+     * 扫码支付，创建订单
+     *
+     * @param request 请求入参
+     * @return 支付订单，含支付地址和图片
+     * @throws Exception 异常
+     */
+    public PrepayResponse prepay(PrepayRequest request) throws Exception {
+        // 1. 请求接口 & 签名
+        Call<PrepayResponse> call = jsPayApi.prepay(
+                request.getMchid(),
+                request.getOutTradeNo(),
+                request.getTotalFee(),
+                request.getBody(),
+                request.getOpenid(),
+                request.getTimestamp(),
+                request.getNotifyUrl(),
+                request.getReturnUrl(),
+                request.getAttach(),
+                request.getTimeExpire(),
+                request.createSign(configuration.getPartnerKey()));
+
+        // 2. 获取数据
+        retrofit2.Response<PrepayResponse> execute = call.execute();
+
+        // 3. 返回结果
+        return execute.body();
     }
 
     /**
@@ -40,7 +52,7 @@ public class NativePayService {
      */
     public QueryOrderByOutTradeNoResponse queryOrderByOutTradeNo(QueryOrderByOutTradeNoRequest request) throws Exception {
         // 1. 请求接口 & 签名
-        Call<QueryOrderByOutTradeNoResponse> call = nativePay.getPayOrder(
+        Call<QueryOrderByOutTradeNoResponse> call = jsPayApi.getPayOrder(
                 request.getMchid(),
                 request.getOutTradeNo(),
                 request.getTimestamp(),
@@ -62,7 +74,7 @@ public class NativePayService {
      */
     public RefundOrderResponse refundOrder(RefundOrderRequest request) throws Exception {
         // 1. 请求接口 & 签名
-        Call<RefundOrderResponse> call = nativePay.refundOrder(
+        Call<RefundOrderResponse> call = jsPayApi.refundOrder(
                 request.getMchid(),
                 request.getOutTradeNo(),
                 request.getOutRefundNo(),
@@ -87,7 +99,7 @@ public class NativePayService {
      */
     public GetRefundOrderResponse getRefundOrder(GetRefundOrderRequest request) throws Exception {
         // 1. 请求接口 & 签名
-        Call<GetRefundOrderResponse> call = nativePay.getRefundOrder(
+        Call<GetRefundOrderResponse> call = jsPayApi.getRefundOrder(
                 request.getMchid(),
                 request.getOutRefundNo(),
                 request.getTimestamp(),
@@ -99,4 +111,5 @@ public class NativePayService {
         // 3. 返回结果
         return execute.body();
     }
+    
 }

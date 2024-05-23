@@ -1,27 +1,31 @@
-package com.zeddic.payments.nativepay;
+package com.zeddic.payments.app;
 
-import com.zeddic.payments.nativepay.model.GetRefundOrderResponse;
-import com.zeddic.payments.nativepay.model.PrepayResponse;
-import com.zeddic.payments.nativepay.model.QueryOrderByOutTradeNoResponse;
-import com.zeddic.payments.nativepay.model.RefundOrderResponse;
+import com.zeddic.payments.app.model.GetRefundOrderResponse;
+import com.zeddic.payments.app.model.PrepayResponse;
+import com.zeddic.payments.app.model.QueryOrderByOutTradeNoResponse;
+import com.zeddic.payments.app.model.RefundOrderResponse;
 import retrofit2.Call;
-import retrofit2.http.*;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.Headers;
+import retrofit2.http.POST;
 
-/**
- * 扫码支付API
- */
-public interface INativePay {
+public interface IAppPayApi {
 
-    @POST("api/wxpay/native")
     @FormUrlEncoded
+    @POST("api/wxpay/app")
     @Headers("content-type: application/x-www-form-urlencoded")
-    Call<PrepayResponse> prepay(@Field("mch_id") String mchId,
-                                @Field("out_trade_no") String outTradeNo,
-                                @Field("total_fee") String totalFee,
-                                @Field("body") String body,
-                                @Field("timestamp") String timestamp,
-                                @Field("notify_url") String notifyUrl,
-                                @Field("sign") String sign
+    Call<PrepayResponse> prepay(
+            @Field("app_id") String appId,
+            @Field("mch_id") String mchId,
+            @Field("out_trade_no") String outTradeNo,
+            @Field("total_fee") String totalFee,
+            @Field("body") String body,
+            @Field("timestamp") String timestamp,
+            @Field("notify_url") String notifyUrl,
+            @Field("attach") String attach,
+            @Field("time_expire") String timeExpire,
+            @Field("sign") String sign
     );
 
     @FormUrlEncoded
@@ -56,4 +60,5 @@ public interface INativePay {
             @Field("timestamp") String timestamp,
             @Field("sign") String sign
     );
+
 }
